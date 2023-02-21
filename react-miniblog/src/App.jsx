@@ -11,7 +11,7 @@ import { useAuthentication } from './hooks'
 import { AuthContextProvider } from './context/AuthContext'
 
 // pages
-import { Home, About, Login, Register } from './page'
+import { Home, About, Login, Register, Dashboard, CreatePost } from './page'
 
 // componentes
 import { Navbar, Footer } from './components'
@@ -45,6 +45,8 @@ function App() {
               <Route path='/about' element={<About />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/posts/create' element={<CreatePost />} />
+              <Route path='/dashboard' element={<Dashboard />} />
             </Routes>
           </div>
           <Footer />
