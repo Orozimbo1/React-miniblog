@@ -26,6 +26,7 @@ const useAuthentication = () => {
     }
   }
 
+  // register
   const createUser = async (data) => {
     checkIfIsCancelled()
 
@@ -69,6 +70,13 @@ const useAuthentication = () => {
     setLoading(false)
   }
 
+  // logout
+  const logout = () => {
+    checkIfIsCancelled()
+
+    signOut(auth)
+  }
+
   useEffect(() => {
     return () => setCancelled(true)
   }, [])
@@ -78,6 +86,7 @@ const useAuthentication = () => {
     createUser,
     error,
     loading,
+    logout,
   }
 }
 
