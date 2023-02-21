@@ -13,13 +13,6 @@ const Register = () => {
   const [error, setError] = useState('')
 
   const { createUser, error: authError, loading } = useAuthentication()
-
-  const cleanUp = () => {
-    setDisplayName('')
-    setEmail('')
-    setPassword('')
-    setConfirmPassword('')
-  }
   
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -38,8 +31,6 @@ const Register = () => {
     }
 
     const res = await createUser(user)
-
-    console.log(res)
   }
 
   useEffect(() => {
