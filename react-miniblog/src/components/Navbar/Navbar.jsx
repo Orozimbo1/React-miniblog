@@ -4,22 +4,22 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav className={styles.navbar}>
-      <NavLink to='/' className={styles.brand}>
+    <nav className={styles ? styles.navbar : undefined}>
+      <NavLink to='/' className={styles ? styles.brand : undefined}>
         Mini<span>Blog</span>
       </NavLink>
-      <ul className={styles.links_list}>
+      <ul className={styles ? styles.links_list : undefined}>
         <li>
-          <NavLink to='/' className={({isActive}) => (isActive && styles.active)}>Home</NavLink>
+          <NavLink to='/' className={({isActive}) => (isActive ? styles.active : undefined)}>Home</NavLink>
         </li>
         <li>
-          <NavLink to='/login' className={({isActive}) => (isActive && styles.active)}>Entrar</NavLink>
+          <NavLink to='/login' className={({isActive}) => (isActive ? styles.active : undefined)}>Entrar</NavLink>
         </li>
         <li>
-          <NavLink to='/register' className={({isActive}) => (isActive && styles.active)}>Cadastrar</NavLink>
+          <NavLink to='/register' className={({isActive}) => (isActive ? styles.active : undefined)}>Cadastrar</NavLink>
         </li>
         <li>
-          <NavLink to='/about' className={({isActive}) => (isActive && styles.active)}>Sobre</NavLink>
+          <NavLink to='/about' className={({isActive}) => (isActive ? styles.active : undefined)}>Sobre</NavLink>
         </li>
       </ul>
     </nav>
