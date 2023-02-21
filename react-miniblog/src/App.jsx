@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 // pages
-import { Home, About } from './page'
+import { Home, About, Login, Register } from './page'
 
 // componentes
 import { Navbar, Footer } from './components'
@@ -17,6 +17,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
           </Routes>
         </div>
         <Footer />
