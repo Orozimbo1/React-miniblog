@@ -27,44 +27,47 @@ const CreatePost = () => {
     setFormError("");
 
     // validate image
-    // try {
-    //   new URL(image);
-    // } catch (error) {
-    //   setFormError("A imagem precisa ser uma URL.");
-    // }
+    try {
+      new URL(image)
+      console.log('deu certo')
+    } catch (error) {
+      setFormError('A imagem precisa ser uma URL.')
+      console.log(image)
+      return
+    }
 
     // create tags array
-    // const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+    const tagsArray = tags.split(',').map((tag) => tag.trim().toLowerCase())
 
     // check values
-    // if (!title || !image || !tags || !body) {
-    //   setFormError("Por favor, preencha todos os campos!");
-    // }
+    if (!title || !image || !tags || !body) {
+      setFormError("Por favor, preencha todos os campos!");
+    }
 
-    // console.log(tagsArray);
+    console.log(tagsArray);
 
-    // console.log({
-    //   title,
-    //   image,
-    //   body,
-    //   tags: tagsArray,
-    //   uid: user.uid,
-    //   createdBy: user.displayName,
-    // });
+    console.log({
+      title,
+      image,
+      body,
+      tags: tagsArray,
+      uid: user.uid,
+      createdBy: user.displayName,
+    });
 
-    // if(formError) return
+    if(formError) return
 
     insertDocument({
       title,
       image,
       body,
-      tags,
+      tags: tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
     });
 
     // redirect to home page
-    // navigate("/");
+    navigate("/");
   };
 
   return (
