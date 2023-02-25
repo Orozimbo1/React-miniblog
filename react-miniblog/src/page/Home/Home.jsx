@@ -11,13 +11,17 @@ import { useFetchDocuments } from '../../hooks'
 import { PostDetail } from '../../components'
 
 const Home = () => {
+  const navigate = useNavigate()
+
   const [query, setQuery] = useState('')
   const { documents: posts, loading } = useFetchDocuments('posts')
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-
+    if(query) {
+      navigate(`/search?q=${query}`)
+    }
   }
 
   return (
