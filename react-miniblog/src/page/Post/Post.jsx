@@ -3,14 +3,21 @@ import style from './Post.module.css'
 import { useParams } from 'react-router-dom'
 
 // hook
+import { useFetchDocument } from '../../hooks'
 
 const Post = () => {
   const { id } = useParams()
+  const { document: post, loading, error } = useFetchDocument('posts', id)
 
   return (
     <div>
-      <h1>Post</h1>
-      <p>{id}</p>
+      {loading && <p>Carregando post...</p>}
+      {post && (
+        <>
+          <h1>{post.title}</h1>
+        </>
+      )}
+      {error && <p>{error}</p>}
     </div>
   )
 }
