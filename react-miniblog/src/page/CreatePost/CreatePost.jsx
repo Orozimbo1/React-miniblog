@@ -10,6 +10,8 @@ import { useAuthValue } from '../../context/AuthContext'
 import { useInsertDocument } from '../../hooks'
 
 const CreatePost = () => {
+  const noimage = 'https://images.unsplash.com/photo-1612538498456-e861df91d4d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGdyYXklMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
+
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [body, setBody] = useState("");
@@ -97,6 +99,8 @@ const CreatePost = () => {
             value={image}
           />
         </label>
+        <p className={styles.preview_title}>Preview da imagem:</p>
+        <img className={styles.image_preview} src={image ? image : noimage} alt={title} />
         <label>
           <span>Conteúdo:</span>
           <textarea
@@ -118,7 +122,7 @@ const CreatePost = () => {
             value={tags}
           />
         </label>
-        {!response.loading && <button className="btn">Criar post!</button>}
+        {!response.loading && <button className="btn">Criar post</button>}
         {response.loading && (
           <button className="btn" disabled>
             Aguarde.. .
