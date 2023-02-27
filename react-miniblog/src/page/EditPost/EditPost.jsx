@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useAuthValue } from '../../context/AuthContext' 
 
 // hooks
-import { useInsertDocument, useFetchDocument } from '../../hooks'
+import { useUpdateDocument, useFetchDocument } from '../../hooks'
 
 const EditPost = () => {
   const { id } = useParams()
@@ -38,7 +38,7 @@ const EditPost = () => {
 
   const navigate = useNavigate();
 
-  const { insertDocument, response } = useInsertDocument('posts');
+  const { updateDocument, response } = useUpdateDocument('posts', id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,10 +47,8 @@ const EditPost = () => {
     // validate image
     try {
       new URL(image)
-      console.log('deu certo')
     } catch (error) {
       setFormError('A imagem precisa ser uma URL.')
-      console.log(image)
       return
     }
 
@@ -62,35 +60,27 @@ const EditPost = () => {
       setFormError("Por favor, preencha todos os campos!");
     }
 
-    console.log(tagsArray);
-
-    console.log({
-      title,
-      image,
-      body,
-      tags: tagsArray,
-      uid: user.uid,
-      createdBy: user.displayName,
-    });
-
     if(formError) return
 
-    insertDocument({
+    const data = {
       title,
       image,
       body,
       tags: tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
-    });
+    }
+
+    updateDocument(id, data);
 
     // redirect to home page
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
     <div className={styles.edit_post}>
       {loading && <p>Carregando ...</p>}
+      {error && <h2>Ocorreu um erro. Tente novamente mais tarde</h2>}
       {post && (
         <>
           <h2>Editar post</h2>

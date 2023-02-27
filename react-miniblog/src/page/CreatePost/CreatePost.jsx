@@ -31,10 +31,8 @@ const CreatePost = () => {
     // validate image
     try {
       new URL(image)
-      console.log('deu certo')
     } catch (error) {
       setFormError('A imagem precisa ser uma URL.')
-      console.log(image)
       return
     }
 
@@ -45,17 +43,6 @@ const CreatePost = () => {
     if (!title || !image || !tags || !body) {
       setFormError("Por favor, preencha todos os campos!");
     }
-
-    console.log(tagsArray);
-
-    console.log({
-      title,
-      image,
-      body,
-      tags: tagsArray,
-      uid: user.uid,
-      createdBy: user.displayName,
-    });
 
     if(formError) return
 
